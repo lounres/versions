@@ -11,10 +11,12 @@ kotlinx-lincheck = "2.34"
 kotlinx-binary-compatibility-validator = "0.16.3"
 kotlinx-knit = "0.4.0"
 
+#kone = "0.0.0-experiment"
 kmath = "0.4.0"
 compose-multiplatform = "1.7.0"
 kaml = "0.59.0"
-logkube = "0.1.0"
+tomlkt = "0.4.0"
+logKube = "0.1.0"
 kotest = "5.9.1"
 jmh = "1.37"
 dokka = "2.0.0-Beta"
@@ -83,8 +85,8 @@ dokka-mathjax = { module = "org.jetbrains.dokka:mathjax-plugin", version.ref = "
 # KMath
 kmath-core = { module = "space.kscience:kmath-core", version.ref = "kmath" }
 
-# LogKube
-logkube-core = { module = "dev.lounres:logKube.core", version.ref = "logkube" }
-
 # Kaml
 kaml = { module = "com.charleskorn.kaml:kaml", version.ref = "kaml" }
+
+# tomlkt
+tomlkt = { module = "net.peanuuutz.tomlkt:tomlkt", version.ref = "tomlkt" }

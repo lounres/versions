@@ -1,3 +1,5 @@
+import dev.lounres.versions.parseVersions
+import org.gradle.kotlin.dsl.support.uppercaseFirstChar
 import java.time.LocalDate
 import java.time.ZoneId
 
@@ -8,11 +10,45 @@ plugins {
     alias(libs.plugins.nexus.publish.plugin)
 }
 
+repositories {
+    mavenCentral()
+}
+
 val today: LocalDate = LocalDate.now(ZoneId.of("UTC"))
 version = "${today.year}.${today.month.value}.${today.dayOfMonth}"
 
 catalog.versionCatalog {
     from(files("gradle/libs.versions.toml"))
+}
+
+val versionCatalogsToMerge: Map<String, String> = mapOf(
+    "logKube" to "dev.lounres:logKube.versionCatalog:${libs.versions.logKube.get()}",
+//    "kone" to "dev.lounres:kone.versionCatalog:${libs.versions.kone.get()}",
+)
+
+for ((name, dependency) in versionCatalogsToMerge) {
+    val versionCatalogCollector = configurations.create("versionCatalogCollectorFor${name.uppercaseFirstChar()}") {
+        isCanBeResolved = true
+        isTransitive = false
+    }
+    
+    dependencies {
+        versionCatalogCollector(dependency)
+    }
+    
+    versionCatalogCollector.files.filter { it.extension == "toml" }.forEach {
+        val versionsFile = it.parseVersions()
+        catalog.versionCatalog {
+            for ((alias, version) in versionsFile.versions)
+                version(alias, version)
+            for ((alias, plugin) in versionsFile.plugins)
+                plugin("$name-$alias", plugin.id).versionRef(plugin.version.ref)
+            for ((alias, library) in versionsFile.libraries)
+                library("$name-$alias", library.group, library.name).versionRef(library.version.ref)
+            for ((alias, bundle) in versionsFile.bundles)
+                bundle("$name-$alias", bundle.map { "$name-$it" })
+        }
+    }
 }
 
 // GR-26091
@@ -22,16 +58,6 @@ tasks.withType<AbstractPublishToMaven>().configureEach {
 }
 
 publishing {
-    repositories {
-        maven {
-            name = "sonatype"
-            setUrl("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
-            credentials {
-                username = project.properties["ossrhUsername"].toString()
-                password = project.properties["ossrhPassword"].toString()
-            }
-        }
-    }
     publications {
         create<MavenPublication>("versionCatalog") {
             artifactId = "versions"
@@ -43,7 +69,7 @@ publishing {
             name = "versions"
             description = "Common versions that I use in my projects"
             url = "https://github.com/lounres/versions"
-            
+
             licenses {
                 license {
                     name = "Apache License, Version 2.0"
@@ -56,7 +82,6 @@ publishing {
                     name = "Gleb Minaev"
                     email = "minaevgleb@yandex.ru"
                 }
-                
             }
             scm {
                 url = "https://github.com/lounres/versions"
