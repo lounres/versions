@@ -23,7 +23,7 @@ catalog.versionCatalog {
 
 val versionCatalogsToMerge: Map<String, String> = mapOf(
     "logKube" to "dev.lounres:logKube.versionCatalog:${libs.versions.logKube.get()}",
-//    "kone" to "dev.lounres:kone.versionCatalog:${libs.versions.kone.get()}",
+    "kone" to "dev.lounres:kone.versionCatalog:${libs.versions.kone.get()}",
 )
 
 for ((name, dependency) in versionCatalogsToMerge) {
