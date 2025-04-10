@@ -30,4 +30,9 @@ jobs:
           distribution: 'graalvm'
 
       - name: Publish versions
-        run: ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository -PsigningKey="${{ secrets.SIGNING_KEY }}" -PsigningPassword=${{ secrets.SIGNING_PASSWORD }} -PsonatypeUsername=${{ secrets.SONATYPE_USERNAME }} -PsonatypePassword=${{ secrets.SONATYPE_PASSWORD }}
+        env:
+          ORG_GRADLE_PROJECT_signingKey: ${{ secrets.SIGNING_KEY }}
+          ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.SIGNING_PASSWORD }}
+          ORG_GRADLE_PROJECT_sonatypeUsername: ${{ secrets.SONATYPE_USERNAME }}
+          ORG_GRADLE_PROJECT_sonatypePassword: ${{ secrets.SONATYPE_PASSWORD }}
+        run: ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository
