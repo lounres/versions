@@ -1,7 +1,7 @@
 import com.vanniktech.maven.publish.SonatypeHost
 import dev.lounres.versions.parseVersions
 import org.gradle.kotlin.dsl.support.uppercaseFirstChar
-import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.ZoneId
 
 plugins {
@@ -13,8 +13,8 @@ repositories {
     mavenCentral()
 }
 
-val today: LocalDate = LocalDate.now(ZoneId.of("UTC"))
-version = "${today.year}.${today.month.value}.${today.dayOfMonth}"
+val now: LocalDateTime = LocalDateTime.now(ZoneId.of("UTC"))
+version = "${now.year}.${now.month.value}.${now.dayOfMonth}.${now.hour}"
 
 catalog.versionCatalog {
     from(files("gradle/libs.versions.toml"))
