@@ -6,9 +6,7 @@ import java.time.ZoneId
 
 plugins {
     `version-catalog`
-    `maven-publish`
-    signing
-    id("com.vanniktech.maven.publish") version "0.31.0"
+    alias(libs.plugins.gradle.maven.publish.plugin)
 }
 
 repositories {
