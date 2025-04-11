@@ -1,3 +1,4 @@
+import com.vanniktech.maven.publish.SonatypeHost
 import dev.lounres.versions.parseVersions
 import org.gradle.kotlin.dsl.support.uppercaseFirstChar
 import java.time.LocalDate
@@ -7,7 +8,7 @@ plugins {
     `version-catalog`
     `maven-publish`
     signing
-    alias(libs.plugins.nexus.publish.plugin)
+    id("com.vanniktech.maven.publish") version "0.31.0"
 }
 
 repositories {
@@ -51,57 +52,33 @@ for ((name, dependency) in versionCatalogsToMerge) {
     }
 }
 
-// GR-26091
-tasks.withType<AbstractPublishToMaven>().configureEach {
-    val signingTasks = tasks.withType<Sign>()
-    mustRunAfter(signingTasks)
-}
-
-publishing {
-    publications {
-        create<MavenPublication>("versionCatalog") {
-            artifactId = "versions"
-            from(components["versionCatalog"])
+mavenPublishing {
+    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+    
+    signAllPublications()
+    
+    coordinates(groupId = project.group as String, artifactId = "versions", version = project.version as String)
+    
+    pom {
+        name = "versions"
+        description = "Common versions that I use in my projects"
+        url = "https://github.com/lounres/versions"
+        
+        licenses {
+            license {
+                name = "Apache License, Version 2.0"
+                url = "https://opensource.org/license/apache-2-0/"
+            }
         }
-    }
-    publications.withType<MavenPublication> {
-        pom {
-            name = "versions"
-            description = "Common versions that I use in my projects"
+        developers {
+            developer {
+                id = "lounres"
+                name = "Gleb Minaev"
+                email = "minaevgleb@yandex.ru"
+            }
+        }
+        scm {
             url = "https://github.com/lounres/versions"
-
-            licenses {
-                license {
-                    name = "Apache License, Version 2.0"
-                    url = "https://opensource.org/license/apache-2-0/"
-                }
-            }
-            developers {
-                developer {
-                    id = "lounres"
-                    name = "Gleb Minaev"
-                    email = "minaevgleb@yandex.ru"
-                }
-            }
-            scm {
-                url = "https://github.com/lounres/versions"
-            }
-        }
-    }
-}
-
-signing {
-    val signingKey: String? by project
-    val signingPassword: String? by project
-    useInMemoryPgpKeys(signingKey, signingPassword)
-    sign(publishing.publications)
-}
-
-nexusPublishing {
-    repositories {
-        sonatype {
-            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
-            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
         }
     }
 }
