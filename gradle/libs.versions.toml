@@ -13,7 +13,7 @@ kotlinx-lincheck = "2.39"
 kotlinx-binary-compatibility-validator = "0.17.0"
 kotlinx-knit = "0.4.0"
 
-kone = "0.0.0-experiment-2025.4.12.10"
+kone = "0.0.0-experiment-2025.5.18.23"
 kmath = "0.4.2"
 compose-multiplatform = "1.8.0"
 kotlin-wrappers = "2025.5.8"
