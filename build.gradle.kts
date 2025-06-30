@@ -1,8 +1,11 @@
 import com.vanniktech.maven.publish.SonatypeHost
-import dev.lounres.versions.parseVersions
+import dev.lounres.versions.VersionsFile
+import net.peanuuutz.tomlkt.Toml
+import net.peanuuutz.tomlkt.parseToTomlTable
 import org.gradle.kotlin.dsl.support.uppercaseFirstChar
 import java.time.LocalDateTime
 import java.time.ZoneId
+import kotlin.io.reader
 
 plugins {
     `version-catalog`
@@ -23,6 +26,7 @@ catalog.versionCatalog {
 val versionCatalogsToMerge: Map<String, String> = mapOf(
 //    "logKube" to "dev.lounres:logKube.versionCatalog:${libs.versions.logKube.get()}",
     "kone" to "dev.lounres:kone.versionCatalog:${libs.versions.kone.get()}",
+    "kotlin-wrappers" to "org.jetbrains.kotlin-wrappers:kotlin-wrappers-catalog:${libs.versions.kotlin.wrappers.get()}"
 )
 
 for ((name, dependency) in versionCatalogsToMerge) {
@@ -36,14 +40,24 @@ for ((name, dependency) in versionCatalogsToMerge) {
     }
     
     versionCatalogCollector.files.filter { it.extension == "toml" }.forEach {
-        val versionsFile = it.parseVersions()
+        val versionsFile = VersionsFile.fromTomlTable(Toml.parseToTomlTable(it.reader(Charsets.UTF_8)))
         catalog.versionCatalog {
             for ((alias, version) in versionsFile.versions)
                 version(alias, version)
-            for ((alias, plugin) in versionsFile.plugins)
-                plugin("$name-$alias", plugin.id).versionRef(plugin.version.ref)
-            for ((alias, library) in versionsFile.libraries)
-                library("$name-$alias", library.group, library.name).versionRef(library.version.ref)
+            for ((alias, plugin) in versionsFile.plugins) {
+                val pluginSpec = plugin("$name-$alias", plugin.id)
+                when (val version = plugin.version) {
+                    is VersionsFile.Version.Raw -> pluginSpec.version(version.value)
+                    is VersionsFile.Version.Ref -> pluginSpec.versionRef(version.value)
+                }
+            }
+            for ((alias, library) in versionsFile.libraries) {
+                val librarySpec = library("$name-$alias", library.group, library.name)
+                when (val version = library.version) {
+                    is VersionsFile.Version.Raw -> librarySpec.version(version.value)
+                    is VersionsFile.Version.Ref -> librarySpec.versionRef(version.value)
+                }
+            }
             for ((alias, bundle) in versionsFile.bundles)
                 bundle("$name-$alias", bundle.map { "$name-$it" })
         }

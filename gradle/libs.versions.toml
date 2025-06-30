@@ -17,7 +17,7 @@ kone = "0.0.0-experiment-2025.6.26.22"
 kmath = "0.4.2"
 compose-multiplatform = "1.9.0-alpha02"
 compose-multiplatform-hot-reload = "1.0.0-alpha10"
-kotlin-wrappers = "2025.6.12"
+kotlin-wrappers = "2025.6.14"
 essenty = "2.5.0"
 decompose = "3.3.0"
 kaml = "0.59.0"
@@ -97,10 +97,6 @@ essenty-lifecycle-coroutines = { module = "com.arkivanov.essenty:lifecycle-corou
 # Decompose
 decompose = { module = "com.arkivanov.decompose:decompose", version.ref = "decompose" }
 decompose-extensions-compose-multiplatform = { module = "com.arkivanov.decompose:extensions-compose", version.ref = "decompose" }
-
-# kotlin-wrappers
-kotlin-wrappers-bom = { module = "org.jetbrains.kotlin-wrappers:kotlin-wrappers-bom", version.ref = "kotlin-wrappers" }
-kotlin-wrappers-browser = { module = "org.jetbrains.kotlin-wrappers:kotlin-browser", version.ref = "kotlin-wrappers" }
 
 # logback
 logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
