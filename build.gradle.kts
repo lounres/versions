@@ -1,4 +1,3 @@
-import com.vanniktech.maven.publish.SonatypeHost
 import dev.lounres.versions.VersionsFile
 import net.peanuuutz.tomlkt.Toml
 import net.peanuuutz.tomlkt.parseToTomlTable
@@ -67,7 +66,7 @@ for ((name, dependency) in versionCatalogsToMerge) {
 }
 
 mavenPublishing {
-    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+    publishToMavenCentral()
     
     signAllPublications()
     
