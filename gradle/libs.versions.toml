@@ -1,5 +1,5 @@
 [versions]
-kotlin = "2.2.20-RC"
+kotlin = "2.2.20-RC2"
 android = "8.0.0"
 ksp = "2.2.20-RC-2.0.2"
 
