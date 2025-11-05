@@ -1,7 +1,7 @@
 [versions]
-kotlin = "2.3.0-Beta1"
+kotlin = "2.3.0-Beta2"
 android = "8.0.0"
-ksp = "2.3.0"
+ksp = "2.3.1"
 
 kotlinx-atomicfu = "0.29.0"
 kotlinx-coroutines = "1.10.2"
@@ -14,8 +14,7 @@ kotlinx-binary-compatibility-validator = "0.18.1"
 kotlinx-knit = "0.4.0"
 
 changelog = "2.4.0"
-compose-multiplatform = "1.10.0-alpha03"
-compose-multiplatform-hot-reload = "1.0.0-alpha10"
+compose-multiplatform = "1.10.0-beta01"
 decompose = "3.4.0"
 dokka = "2.1.0"
 essenty = "2.5.0"
@@ -27,8 +26,8 @@ komponentual = "0.2.3"
 kone = "0.0.0-experiment-2025.9.1.19"
 kord = "0.17.0"
 kotest = "5.9.1"
-kotlin-wrappers = "2025.10.12"
-ktor = "3.3.1"
+kotlin-wrappers = "2025.11.3"
+ktor = "3.3.2"
 logback =  "1.5.6"
 logKube = "0.2.3"
 tomlkt = "0.5.0"
@@ -64,7 +63,6 @@ kotlinx-knit = { id = "org.jetbrains.kotlinx:kotlinx-knit", version.ref = "kotli
 # Extra
 changelog = { id = "org.jetbrains.changelog", version.ref = "changelog" }
 compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
-compose-multiplatform-hot-reload = { id = "org.jetbrains.compose.hot-reload", version.ref = "compose-multiplatform-hot-reload" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 kotest-multiplatform = { id = "io.kotest.multiplatform", version.ref = "kotest" }
 ktor = { id = "io.ktor.plugin", version.ref = "ktor" }
