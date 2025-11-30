@@ -15,6 +15,8 @@ kotlinx-knit = "0.4.0"
 
 changelog = "2.5.0"
 compose-multiplatform = "1.10.0-beta02"
+compose-multiplatform-material3 = "1.10.0-alpha05"
+compose-multiplatform-material3-adaptive = "1.3.0-alpha02"
 decompose = "3.4.0"
 dokka = "2.1.0"
 essenty = "2.5.0"
@@ -27,7 +29,7 @@ kone = "0.0.0-experiment-2025.9.1.19"
 kord = "0.17.0"
 kotest = "5.9.1"
 kotlin-wrappers = "2025.11.12"
-ktor = "3.3.2"
+ktor = "3.3.3"
 logback =  "1.5.6"
 logKube = "0.2.3"
 tomlkt = "0.5.0"
@@ -137,3 +139,37 @@ kaml = { module = "com.charleskorn.kaml:kaml", version.ref = "kaml" }
 
 # tomlkt
 tomlkt = { module = "net.peanuuutz.tomlkt:tomlkt", version.ref = "tomlkt" }
+
+# Compose Multiplatform
+compose-multiplatform-animation = { module = "org.jetbrains.compose.animation:animation", version.ref = "compose-multiplatform" }
+compose-multiplatform-animationGraphics = { module = "org.jetbrains.compose.animation:animation-graphics", version.ref = "compose-multiplatform" }
+compose-multiplatform-foundation = { module = "org.jetbrains.compose.foundation:foundation", version.ref = "compose-multiplatform" }
+compose-multiplatform-material = { module = "org.jetbrains.compose.material:material", version.ref = "compose-multiplatform" }
+compose-multiplatform-material3 = { module = "org.jetbrains.compose.material3:material3", version.ref = "compose-multiplatform-material3" }
+compose-multiplatform-material3-windowSizeClass = { module = "org.jetbrains.compose.material3:material3-window-size-class", version.ref = "compose-multiplatform-material3" }
+compose-multiplatform-material3-adaptiveNavigationSuite = { module = "org.jetbrains.compose.material3:material3-adaptive-navigation-suite", version.ref = "compose-multiplatform-material3" }
+compose-multiplatform-material3-adaptive = { module = "org.jetbrains.compose.material3.adaptive:adaptive", version.ref = "compose-multiplatform-material3-adaptive" }
+compose-multiplatform-material3-adaptive-adaptiveLayout = { module = "org.jetbrains.compose.material3.adaptive:adaptive-layout", version.ref = "compose-multiplatform-material3-adaptive" }
+compose-multiplatform-material3-adaptive-adaptiveNavigation = { module = "org.jetbrains.compose.material3.adaptive:adaptive-navigation", version.ref = "compose-multiplatform-material3-adaptive" }
+compose-multiplatform-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "compose-multiplatform" }
+compose-multiplatform-runtimeSaveable = { module = "org.jetbrains.compose.runtime:runtime-saveable", version.ref = "compose-multiplatform" }
+compose-multiplatform-ui = { module = "org.jetbrains.compose.ui:ui", version.ref = "compose-multiplatform" }
+compose-multiplatform-uiTest = { module = "org.jetbrains.compose.ui:ui-test", version.ref = "compose-multiplatform" }
+compose-multiplatform-uiTooling = { module = "org.jetbrains.compose.ui:ui-tooling", version.ref = "compose-multiplatform" }
+compose-multiplatform-uiUtil = { module = "org.jetbrains.compose.ui:ui-util", version.ref = "compose-multiplatform" }
+compose-multiplatform-preview = { module = "org.jetbrains.compose.ui:ui-tooling-preview", version.ref = "compose-multiplatform" }
+compose-multiplatform-components-resources = { module = "org.jetbrains.compose.components:components-resources", version.ref = "compose-multiplatform" }
+compose-multiplatform-components-uiToolingPreview = { module = "org.jetbrains.compose.components:components-ui-tooling-preview", version.ref = "compose-multiplatform" }
+compose-multiplatform-desktop-common = { module = "org.jetbrains.compose.desktop:desktop", version.ref = "compose-multiplatform" }
+compose-multiplatform-desktop-linuxX64 = { module = "org.jetbrains.compose.desktop:desktop-jvm-linux-x64", version.ref = "compose-multiplatform" }
+compose-multiplatform-desktop-linuxArm64 = { module = "org.jetbrains.compose.desktop:desktop-jvm-linux-arm64", version.ref = "compose-multiplatform" }
+compose-multiplatform-desktop-windowsX64 = { module = "org.jetbrains.compose.desktop:desktop-jvm-windows-x64", version.ref = "compose-multiplatform" }
+compose-multiplatform-desktop-windowsArm64 = { module = "org.jetbrains.compose.desktop:desktop-jvm-windows-arm64", version.ref = "compose-multiplatform" }
+compose-multiplatform-desktop-macosX64 = { module = "org.jetbrains.compose.desktop:desktop-jvm-macos-x64", version.ref = "compose-multiplatform" }
+compose-multiplatform-desktop-macosArm64 = { module = "org.jetbrains.compose.desktop:desktop-jvm-macos-arm64", version.ref = "compose-multiplatform" }
+compose-multiplatform-desktop-uiTestJUnit4 = { module = "org.jetbrains.compose.ui:ui-test-junit4", version.ref = "compose-multiplatform" }
+compose-multiplatform-desktop-components-splitPane = { module = "org.jetbrains.compose.components:components-splitpane", version.ref = "compose-multiplatform" }
+compose-multiplatform-desktop-components-animatedImage = { module = "org.jetbrains.compose.components:components-animatedImage", version.ref = "compose-multiplatform" }
+compose-multiplatform-html-core = { module = "org.jetbrains.compose.html:html-core", version.ref = "compose-multiplatform" }
+compose-multiplatform-html-svg = { module = "org.jetbrains.compose.html:html-svg", version.ref = "compose-multiplatform" }
+compose-multiplatform-html-testUtils = { module = "org.jetbrains.compose.html:html-test-utils", version.ref = "compose-multiplatform" }
