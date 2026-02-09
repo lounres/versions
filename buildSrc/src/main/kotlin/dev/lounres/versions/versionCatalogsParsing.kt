@@ -1,9 +1,9 @@
 package dev.lounres.versions
 
-import net.peanuuutz.tomlkt.TomlArray
-import net.peanuuutz.tomlkt.TomlElement
-import net.peanuuutz.tomlkt.TomlLiteral
-import net.peanuuutz.tomlkt.TomlTable
+import dev.eav.tomlkt.TomlArray
+import dev.eav.tomlkt.TomlElement
+import dev.eav.tomlkt.TomlLiteral
+import dev.eav.tomlkt.TomlTable
 
 
 data class VersionsFile(

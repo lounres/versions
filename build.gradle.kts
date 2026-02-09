@@ -1,6 +1,6 @@
 import dev.lounres.versions.VersionsFile
-import net.peanuuutz.tomlkt.Toml
-import net.peanuuutz.tomlkt.parseToTomlTable
+import dev.eav.tomlkt.Toml
+import dev.eav.tomlkt.parseToTomlTable
 import org.gradle.kotlin.dsl.support.uppercaseFirstChar
 import java.time.LocalDateTime
 import java.time.ZoneId
