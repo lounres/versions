@@ -27,7 +27,8 @@ val versionCatalogsToMerge: Map<String, String> = mapOf(
     "kone" to "dev.lounres:kone.versionCatalog:${libs.versions.kone.get()}",
     "logKube" to "dev.lounres:logKube.versionCatalog:${libs.versions.logKube.get()}",
     "komponentual" to "dev.lounres:komponentual.versionCatalog:${libs.versions.komponentual.get()}",
-    "kotlin-wrappers" to "org.jetbrains.kotlin-wrappers:kotlin-wrappers-catalog:${libs.versions.kotlin.wrappers.get()}"
+    "kotlin-wrappers" to "org.jetbrains.kotlin-wrappers:kotlin-wrappers-catalog:${libs.versions.kotlin.wrappers.get()}",
+    "cryptography" to "dev.whyoleg.cryptography:cryptography-version-catalog:${libs.versions.cryptography.get()}",
 )
 
 for ((name, dependency) in versionCatalogsToMerge) {
